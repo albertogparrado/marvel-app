@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="ModelCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="ModelCell" rowHeight="97" id="KGk-i7-Jjw" customClass="HeroeCell" customModule="Marvel" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="97"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="328" height="97"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo marvel" translatesAutoresizingMaskIntoConstraints="NO" id="83G-Ys-7LK">
+                        <rect key="frame" x="5" y="5" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="5Le-Y4-T0s"/>
+                            <constraint firstAttribute="height" constant="80" id="C2L-aI-JqL"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEB-HU-Gan">
+                        <rect key="frame" x="90" y="5" width="233" height="21"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ly-mp-uI2">
+                        <rect key="frame" x="90" y="31" width="233" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3Ly-mp-uI2" firstAttribute="leading" secondItem="83G-Ys-7LK" secondAttribute="trailing" constant="5" id="3dL-he-NBO"/>
+                    <constraint firstItem="3Ly-mp-uI2" firstAttribute="top" secondItem="OEB-HU-Gan" secondAttribute="bottom" constant="5" id="4lR-f0-9P7"/>
+                    <constraint firstItem="83G-Ys-7LK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="BoU-Uz-hAP"/>
+                    <constraint firstAttribute="bottom" secondItem="83G-Ys-7LK" secondAttribute="bottom" constant="5" id="CeN-yC-Hne"/>
+                    <constraint firstAttribute="trailing" secondItem="OEB-HU-Gan" secondAttribute="trailing" constant="5" id="DLt-5g-EWQ"/>
+                    <constraint firstAttribute="trailing" secondItem="3Ly-mp-uI2" secondAttribute="trailing" constant="5" id="Gjo-ol-mer"/>
+                    <constraint firstItem="83G-Ys-7LK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="hr0-tr-7IH"/>
+                    <constraint firstItem="OEB-HU-Gan" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kB7-dC-FVl"/>
+                    <constraint firstItem="OEB-HU-Gan" firstAttribute="leading" secondItem="83G-Ys-7LK" secondAttribute="trailing" constant="5" id="rky-nd-oqy"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <accessibility key="accessibilityConfiguration" identifier="ModelCell"/>
+            <connections>
+                <outlet property="descriptionCell" destination="3Ly-mp-uI2" id="a7v-Dy-nbn"/>
+                <outlet property="imageCell" destination="83G-Ys-7LK" id="nqB-iQ-jJc"/>
+                <outlet property="titleCell" destination="OEB-HU-Gan" id="zEN-rD-FqJ"/>
+            </connections>
+            <point key="canvasLocation" x="117.39130434782609" y="126.22767857142857"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="logo marvel" width="4096" height="1638"/>
+    </resources>
+</document>
