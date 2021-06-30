@@ -21,7 +21,7 @@ class HeroeCell: UITableViewCell {
         super.awakeFromNib()
         
         selectionStyle = .none
-        accessoryType = .disclosureIndicator
+//        accessoryType = .disclosureIndicator
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

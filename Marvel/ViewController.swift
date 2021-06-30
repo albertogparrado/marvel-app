@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //MARK: - OUTLETS
     @IBOutlet weak var tableViewHeroe: UITableView!
-    @IBOutlet weak var indicatorCircle: UIActivityIndicatorView!
+   
     
     
     //MARK: - VARIABLES
@@ -20,23 +20,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var misCellLoading = MCell(xibName: "LoadCell", idReuse: "LoadingCell")
     var heroe: [CharacterResult] = []
     var isLoading = false
-    var offset: Int = 0
+    private var offset: Int = 0
     
-    //MARK: - CIRCLE LIFE
+    //MARK: - LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        indicatorCircle.hidesWhenStopped = true
+//        indicatorCircle.hidesWhenStopped = true
         
         self.tableViewHeroe?.register(UINib(nibName: misCell.xibName, bundle: nil), forCellReuseIdentifier: misCell.idReuse)
         self.tableViewHeroe?.register(UINib(nibName: misCellLoading.xibName, bundle: nil), forCellReuseIdentifier: misCellLoading.idReuse)
         
         self.tableViewHeroe.delegate = self
         self.tableViewHeroe.dataSource = self
-        self.indicatorCircle.startAnimating() //Bola de carga
+//        self.indicatorCircle.startAnimating() //Bola de carga
         
         networkSetup()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     var heroToSend: CharacterResult?
@@ -93,7 +103,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
    
     
-    func tableView(tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    private func tableView(tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: misCell.idReuse, for: indexPath) as! HeroeCell
             cell.setData(heroes: heroe[indexPath.row])
@@ -149,29 +159,24 @@ private extension ViewController{
                 self.tableViewHeroe.reloadData()
                 
             case .failure(_):
-                self.errorAlert()
-                print("error al cargar datos")//PONER alert
+                self.errorAlert(title: "ERROR", message: "Error al cargar los datos de Internet.")
+                print("error al cargar datos desde la API")
             }
-            self.indicatorCircle.stopAnimating()//Bola de carga
+//            self.indicatorCircle.stopAnimating()//Bola de carga
             self.isLoading = false
         }
     }
     
     
     
-    //PENDIENTE...
-    private func errorAlert(){
-        let alertController = UIAlertController(title: "ERROR", message: "Load error", preferredStyle: .alert)
-        let closeAction = UIAlertAction(title: "Try again", style: .default) { (action: UIAlertAction) in
-            self.networkSetup()
-        }
+    //ALERT 
+    private func errorAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "Cancelar", style: .default, handler: { (action : UIAlertAction!) -> Void in })
-        alertController.addTextField { (textField : UITextField!) -> Void in
-        }
-        alertController.addAction(closeAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
+    
+        present(alert, animated: true, completion: nil)
+    
     }
 }
 
