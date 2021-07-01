@@ -26,10 +26,12 @@ class InfoVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     var imageHeroInfo: String = ""
     var heroeFull: CharacterResult?
     var seriesAPI: [SerieResult] = []
-    //    var comics: [ComicsResult?] = []
+    var comicsAPI: [ComicResult] = []
+    var eventsAPI: [EventResult] = []
     private var offset: Int = 0
     var misCellsComics: MCell = MCell(xibName: "ComicsCVC", idReuse: "ComicCell")
     var misCellsSeries: MCell = MCell(xibName: "SeriesCollectionViewCell", idReuse: "SerieCell")
+    var misCellsEvents: MCell = MCell(xibName: "EventsCVC", idReuse: "EventCell")
     
     
     //MARK: - CICLE LIFE
@@ -39,16 +41,22 @@ class InfoVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         setupSeriesCollection()
         
         setupBasicHeroData()
-
+        
         infoSeries()
-
+        infoComics()
+        infoEvents()
+        
     }
     
     
     //  MARK:- COLLECTION VIEW COMICS
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        return seriesAPI.count
+        
+        if collectionView == seriesCollection {return seriesAPI.count} else
+        if collectionView == comicsCollection {return comicsAPI.count} else {
+            return eventsAPI.count}
+        
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -58,69 +66,112 @@ class InfoVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             cell.setData(serie: seriesAPI[indexPath.row])
             return cell
             
-        } else {//} if (collectionView == comicsCollection){
+        } else if (collectionView == comicsCollection){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: misCellsComics.idReuse, for: indexPath) as! ComicsCVC
-            cell.setData(image: "comic")
+            cell.setData(comic: comicsAPI[indexPath.row])
             return cell
             
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: misCellsEvents.idReuse, for: indexPath) as! EventsCVC
+            cell.setData(event: eventsAPI[indexPath.row])
+            return cell
         }
-            
-    }
+        }
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("TOUCH ON:", indexPath.row)
         
-        //        performSegue(withIdentifier: "SegueTable", sender: self)
+        if collectionView == seriesCollection {
+
+            guard let secureSerie = seriesAPI[indexPath.row].urls?[0].url else {return}
+            print(secureSerie)
+            //Abrir navegador con esa URL
+            UIApplication.shared.open(URL(string: String(secureSerie))!)
+            
+        } else if (collectionView == comicsCollection){
+            guard let secureComic = comicsAPI[indexPath.row].urls?[0].url else {return}
+            print(secureComic)
+            //Abrir navegador con esa URL
+            UIApplication.shared.open(URL(string: String(secureComic))!)
+            
+        } else {
+            guard let secureEvent = eventsAPI[indexPath.row].urls?[0].url else {return}
+            print(secureEvent)
+            //Abrir navegador con esa URL
+            UIApplication.shared.open(URL(string: String(secureEvent))!)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.height/1.5, height: collectionView.frame.height)
+        if collectionView == seriesCollection {
+            return CGSize(width: collectionView.frame.height, height: collectionView.frame.height)
+        } else {
+            return CGSize(width: collectionView.frame.height/1.5, height: collectionView.frame.height)
+        }
+        
+        
     }
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//            let defaultSize = CGSize(width: collectionView.frame.height/1.5, height: collectionView.frame.height)
-//            if collectionView == self.comicsCollection { return defaultSize } else
-//            if collectionView == self.seriesCollection { return defaultSize } else
-//            if collectionView == self.eventsCollection { return defaultSize }
-//            return defaultSize
-//        }
-    
 }
 
 
 // MARK: PRIVATE METHOS
 private extension InfoVC{
     
-    //    private func infoComics(id: Int){
-    //
-    //        NetworkComics().getComics(characterID: id)
-    //        { result in
-    //            switch result {
-    //            case .success(let serie):
-    //                guard let secureResults = serie.data?.results else{return}
-    //                print(secureResults)
-    //
-    //            case .failure(_):
-    //                print("error al cargar datos desde la API")
-    //            }
-    //
-    //        }
-    //
-    //    }
-    
-     func infoSeries() {
+    func infoComics(){
         //ID:
-        guard let comicSecureID = heroeFull?.id else {
+        guard let heroIDSecure = heroeFull?.id else {
             return
         }
         
-        NetworkClient().getSeries(characterID: comicSecureID, offset: 0) { result in
+        NetworkClient().getComics(characterID: heroIDSecure, offset: 0) { result in
+            switch result {
+            case .success(let comics):
+                guard let secureResults = comics.data?.results else{return}
+                self.comicsAPI = secureResults
+                self.comicsCollection.reloadData()
+                
+            case .failure(_):
+                print("error al cargar datos desde la API")
+            }
+            
+        }
+        
+    }
+    
+    func infoSeries() {
+        //ID:
+        guard let heroIDSecure = heroeFull?.id else {
+            return
+        }
+        
+        NetworkClient().getSeries(characterID: heroIDSecure, offset: 0) { result in
             switch result {
             case .success(let series):
                 guard let secureResults = series.data?.results else{return}
                 self.seriesAPI = secureResults
                 self.seriesCollection.reloadData()
-                print("SERIES API:", self.seriesAPI)
+                
+            case .failure(_):
+                print("error al cargar datos desde la API")
+            }
+            
+        }
+        
+    }
+    
+    func infoEvents() {
+        //ID:
+        guard let heroIDSecure = heroeFull?.id else {
+            return
+        }
+        
+        NetworkClient().getEvents(characterID: heroIDSecure, offset: 0) { result in
+            switch result {
+            case .success(let series):
+                guard let secureResults = series.data?.results else{return}
+                self.eventsAPI = secureResults
+                self.eventsCollection.reloadData()
                 
             case .failure(_):
                 print("error al cargar datos desde la API")
@@ -154,9 +205,15 @@ private extension InfoVC{
         //Collection
         seriesCollection.dataSource = self
         seriesCollection.delegate = self
+        comicsCollection.dataSource = self
+        comicsCollection.delegate = self
+        eventsCollection.dataSource = self
+        eventsCollection.delegate = self
         
         //registrall cell collection
         seriesCollection.register(UINib(nibName: misCellsSeries.xibName, bundle: nil), forCellWithReuseIdentifier: misCellsSeries.idReuse)
+        comicsCollection.register(UINib(nibName: misCellsComics.xibName, bundle: nil), forCellWithReuseIdentifier: misCellsComics.idReuse)
+        eventsCollection.register(UINib(nibName: misCellsEvents.xibName, bundle: nil), forCellWithReuseIdentifier: misCellsEvents.idReuse)
     }
     
     

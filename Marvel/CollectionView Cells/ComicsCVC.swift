@@ -23,9 +23,18 @@ class ComicsCVC: UICollectionViewCell {
     }
     
     
-    func setData(image: String){
-        imageComic.image = UIImage(named: "comic")
-            
-            imageComic.cornerRadius(radius: 25)
+    func setData(comic: ComicResult){
+        //Carga de imagenes HTTPS
+        guard let securePath = comic.thumbnail?.path, let secureExtension = comic.thumbnail?.extensionn else {
+            return
+        }
+        
+        let URLimage: String = "\(securePath).\(secureExtension)"
+//        let URLimageHHTPS = "https" + URLimage.dropFirst(4)
+        let aaa = URLimage.replacingOccurrences(of: "http", with: "https")
+        let url = URL(string: aaa)
+        imageComic.kf.setImage(with: url)
+        
+        
     }
 }
