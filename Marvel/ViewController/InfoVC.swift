@@ -34,7 +34,7 @@ class InfoVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     var misCellsEvents: MCell = MCell(xibName: "EventsCVC", idReuse: "EventCell")
     
     
-    //MARK: - CICLE LIFE
+    //MARK: - LIFE CYRCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
