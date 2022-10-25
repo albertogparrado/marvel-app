@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lGc-hL-GaJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lGc-hL-GaJ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Marvel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="Marvel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="unP-Uz-OBq">
-                                <rect key="frame" x="0.0" y="139" width="414" height="757"/>
+                                <rect key="frame" x="0.0" y="143" width="414" height="753"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo marvel" translatesAutoresizingMaskIntoConstraints="NO" id="0x9-YB-H4b">
-                                <rect key="frame" x="125" y="60" width="164" height="63"/>
+                                <rect key="frame" x="125" y="64" width="164" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="rff-Cy-L0C"/>
                                 </constraints>
@@ -52,16 +52,16 @@
             </objects>
             <point key="canvasLocation" x="768" y="94"/>
         </scene>
-        <!--InfoVC-->
+        <!--Detail Heroe View Controller-->
         <scene sceneID="ybw-I8-IOe">
             <objects>
-                <viewController id="wk0-i6-xt2" customClass="InfoVC" customModule="Marvel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wk0-i6-xt2" customClass="DetailHeroeViewController" customModule="Marvel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AGa-Mi-qyP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rLx-gV-nAZ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="48" width="414" height="848"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-Y9-ZJa">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1155"/>
@@ -199,14 +199,23 @@
                                 <viewLayoutGuide key="contentLayoutGuide" id="5tG-jB-syC"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="8Gt-Le-BEa"/>
                             </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="sDv-ML-dtf">
+                                <rect key="frame" x="0.0" y="-38" width="414" height="986"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dlQ-Q5-3H0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="rLx-gV-nAZ" secondAttribute="bottom" id="4O5-xH-Rji"/>
+                            <constraint firstItem="sDv-ML-dtf" firstAttribute="centerX" secondItem="dlQ-Q5-3H0" secondAttribute="centerX" id="7IY-FB-xC2"/>
+                            <constraint firstItem="sDv-ML-dtf" firstAttribute="width" secondItem="AGa-Mi-qyP" secondAttribute="width" id="GGU-5l-hvt"/>
+                            <constraint firstItem="sDv-ML-dtf" firstAttribute="height" secondItem="AGa-Mi-qyP" secondAttribute="height" multiplier="1.1" id="MPb-4w-vJw"/>
                             <constraint firstItem="rLx-gV-nAZ" firstAttribute="top" secondItem="dlQ-Q5-3H0" secondAttribute="top" id="m5d-AM-kUE"/>
                             <constraint firstItem="rLx-gV-nAZ" firstAttribute="trailing" secondItem="dlQ-Q5-3H0" secondAttribute="trailing" id="nft-pG-oJt"/>
                             <constraint firstItem="rLx-gV-nAZ" firstAttribute="leading" secondItem="dlQ-Q5-3H0" secondAttribute="leading" id="o3j-ZE-Pz1"/>
+                            <constraint firstItem="sDv-ML-dtf" firstAttribute="centerY" secondItem="dlQ-Q5-3H0" secondAttribute="centerY" id="zni-as-GUh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="IfF-bc-qDe"/>
@@ -214,10 +223,14 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="comicsCollection" destination="XOe-u6-ppX" id="A5L-sm-Jpq"/>
+                        <outlet property="comicsTitle" destination="4ro-xh-t5F" id="DXM-zV-Zi8"/>
                         <outlet property="descriptionInfo" destination="NN1-N7-Fc5" id="Vyo-g6-5sb"/>
                         <outlet property="eventsCollection" destination="2c6-lm-wo6" id="JPy-kd-nFJ"/>
+                        <outlet property="eventsTitle" destination="DFL-78-Niv" id="PFS-gM-rXI"/>
                         <outlet property="imageInfo" destination="hmA-1Q-wyU" id="mJH-QE-wZ7"/>
                         <outlet property="seriesCollection" destination="JTh-Z2-Kde" id="dIY-Mu-2li"/>
+                        <outlet property="seriesTitle" destination="agu-1x-zyN" id="0B1-Gz-IWK"/>
+                        <outlet property="spinner" destination="sDv-ML-dtf" id="kUE-Xr-MIc"/>
                         <outlet property="titleHeroe" destination="kDw-xT-XT8" id="WEi-ov-oec"/>
                     </connections>
                 </viewController>
@@ -231,7 +244,7 @@
                 <navigationController title="API Marvel" automaticallyAdjustsScrollViewInsets="NO" id="lGc-hL-GaJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ElI-qO-X0d">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

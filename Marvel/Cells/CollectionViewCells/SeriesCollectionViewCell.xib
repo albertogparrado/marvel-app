@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,14 +11,18 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="SerieCell" reuseIdentifier="SerieCell" id="gTV-IL-0wX" customClass="SeriesCollectionViewCell" customModule="Marvel" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="171" height="214"/>
+            <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="171" height="214"/>
+                <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K5V-55-eWC">
-                        <rect key="frame" x="0.0" y="0.0" width="171" height="214"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="150" id="YN6-8M-y0T"/>
+                            <constraint firstAttribute="height" constant="200" id="fKf-un-MpF"/>
+                        </constraints>
                     </imageView>
                 </subviews>
             </view>
@@ -29,11 +33,11 @@
                 <constraint firstAttribute="bottom" secondItem="K5V-55-eWC" secondAttribute="bottom" id="j8c-Ls-SP0"/>
                 <constraint firstAttribute="trailing" secondItem="K5V-55-eWC" secondAttribute="trailing" id="vqh-wd-G05"/>
             </constraints>
-            <size key="customSize" width="171" height="214"/>
+            <size key="customSize" width="150" height="200"/>
             <connections>
                 <outlet property="imageSerie" destination="K5V-55-eWC" id="xrT-m1-b2S"/>
             </connections>
-            <point key="canvasLocation" x="199.27536231884059" y="106.47321428571428"/>
+            <point key="canvasLocation" x="184.05797101449278" y="101.78571428571428"/>
         </collectionViewCell>
     </objects>
 </document>

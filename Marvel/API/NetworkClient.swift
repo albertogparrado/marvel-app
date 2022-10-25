@@ -8,31 +8,23 @@
 import Alamofire
 import Foundation
 
-
-class NetworkClient{
-    
-    //    MARK: VARIABLES
+class NetworkClient {
+    // MARK: VARIABLES
     private let baseURL = "https://gateway.marvel.com"
     private let characterPath = "/v1/public/characters"
     private let comicPath = "/comics"
-    private let idComic:Int = 0
+    private let idComic: Int = 0
     private let seriesPath = "/v1/public/characters/"
     private let seriesEndPath = "/series"
     private let comicsEndPath = "/comics"
     private let eventsEndPath = "/events"
-    
-    private lazy var timestamp : Int = {
+    private lazy var timestamp: Int = {
         return Int(Date().timeIntervalSince1970)
     }()
-    
     private lazy var hash: String = {
         return md5Hash("\(timestamp)\(privateKey)\(publicKey)")
     }()
-    
-    
-    
-    
-    //    MARK: CHARACTERS
+    // MARK: CHARACTERS
     func getCharacters(offset: Int, completion: @escaping (Result<CharacterResponse, NetworkError>) -> Void) {
         AF.request(
             "\(baseURL)\(characterPath)",
@@ -46,7 +38,7 @@ class NetworkClient{
             ]
         ).validate(statusCode: 200 ..< 299).responseJSON { serverResponse in
             guard serverResponse.error == nil else {
-                completion(.failure(.serverError("Ha ocurrido algun error: \(serverResponse.error?.localizedDescription ?? "")")))
+                completion(.failure(.serverError("Error: \(serverResponse.error?.localizedDescription ?? "")")))
                 return
             }
             guard let secureData = serverResponse.data else {
@@ -62,11 +54,9 @@ class NetworkClient{
             }
         }
     }
-    
-    //    MARK: SERIES
-    func getSeries(characterID: Int, offset:Int, completion: @escaping (Result<SerieResponse, NetworkError>) -> Void) {
+    // MARK: SERIES
+    func getSeries(characterID: Int, offset: Int, completion: @escaping (Result<SerieResponse, NetworkError>) -> Void) {
         AF.request(
-            
             "\(baseURL)\(seriesPath)\(characterID)\(seriesEndPath)",
             method: .get,
             parameters: [
@@ -76,14 +66,14 @@ class NetworkClient{
                 "limit": 100,
                 "offset": offset
             ]
-        ).validate(statusCode: 200 ..< 299).responseJSON{responseAPISeries in
+        ).validate(statusCode: 200 ..< 299).responseJSON { responseAPISeries in
             guard responseAPISeries.error == nil else {
-                completion(.failure(.serverError("Ha ocurrido algun error: \(responseAPISeries.error?.localizedDescription ?? "")")))
+                completion(.failure(.serverError("Error: \(responseAPISeries.error?.localizedDescription ?? "")")))
                 return
             }
             guard let secureData = responseAPISeries.data else {
                 completion(.failure(.dataError("Ha ocurrido algun error y los datos no existen")))
-                return 
+                return
             }
             do {
                 let json = try JSONDecoder().decode(SerieResponse.self, from: secureData)
@@ -94,15 +84,9 @@ class NetworkClient{
             }
         }
     }
-    
-    
-    
-    
-    //    MARK: COMICS
-    func getComics(characterID: Int, offset:Int, completion: @escaping (Result<ComicResponse, NetworkError>) -> Void) {
-        
+    // MARK: COMICS
+    func getComics(characterID: Int, offset: Int, completion: @escaping (Result<ComicResponse, NetworkError>) -> Void) {
         AF.request(
-            
             "\(baseURL)\(seriesPath)\(characterID)\(comicsEndPath)",
             method: .get,
             parameters: [
@@ -112,9 +96,9 @@ class NetworkClient{
                 "limit": 100,
                 "offset": offset
             ]
-        ).validate(statusCode: 200 ..< 299).responseJSON{responseAPISeries in
+        ).validate(statusCode: 200 ..< 299).responseJSON { responseAPISeries in
             guard responseAPISeries.error == nil else {
-                completion(.failure(.serverError("Ha ocurrido algun error: \(responseAPISeries.error?.localizedDescription ?? "")")))
+                completion(.failure(.serverError("Error: \(responseAPISeries.error?.localizedDescription ?? "")")))
                 return
             }
             guard let secureData = responseAPISeries.data else {
@@ -130,13 +114,9 @@ class NetworkClient{
             }
         }
     }
-    
-    
-//    MARK: EVENTS
-    func getEvents(characterID: Int, offset:Int, completion: @escaping (Result<EventResponse, NetworkError>) -> Void) {
-        
+    // MARK: EVENTS
+    func getEvents(characterID: Int, offset: Int, completion: @escaping (Result<EventResponse, NetworkError>) -> Void) {
         AF.request(
-            
             "\(baseURL)\(seriesPath)\(characterID)\(eventsEndPath)",
             method: .get,
             parameters: [
@@ -146,9 +126,9 @@ class NetworkClient{
                 "limit": 100,
                 "offset": offset
             ]
-        ).validate(statusCode: 200 ..< 299).responseJSON{responseAPISeries in
+        ).validate(statusCode: 200 ..< 299).responseJSON { responseAPISeries in
             guard responseAPISeries.error == nil else {
-                completion(.failure(.serverError("Ha ocurrido algun error: \(responseAPISeries.error?.localizedDescription ?? "")")))
+                completion(.failure(.serverError("Error: \(responseAPISeries.error?.localizedDescription ?? "")")))
                 return
             }
             guard let secureData = responseAPISeries.data else {
@@ -165,15 +145,11 @@ class NetworkClient{
         }
     }
 }
-
-
-
-//  MARK: ENUM
+// MARK: NetworkError
 enum NetworkError: Error, LocalizedError {
     case serverError(String)
     case dataError(String)
     case serializationError(String)
-    
     public var errorDescription: String? {
         switch self {
         case .serverError(let descrition):
@@ -185,5 +161,3 @@ enum NetworkError: Error, LocalizedError {
         }
     }
 }
-
-
