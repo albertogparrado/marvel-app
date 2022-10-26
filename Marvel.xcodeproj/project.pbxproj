@@ -17,6 +17,9 @@
 		D321EF972906BC42003C446A /* HomeViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321EF962906BC42003C446A /* HomeViewControllerDataSource.swift */; };
 		D321EF992907C482003C446A /* DetailHeroeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321EF982907C482003C446A /* DetailHeroeViewModel.swift */; };
 		D321EF9B2907D688003C446A /* DetailHeroeViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321EF9A2907D688003C446A /* DetailHeroeViewControllerDataSource.swift */; };
+		D321EFA329081064003C446A /* MarvelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321EFA229081064003C446A /* MarvelTests.swift */; };
+		D321EFAA29081345003C446A /* NetworkClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321EFA929081345003C446A /* NetworkClientTests.swift */; };
+		D321EFAD29083506003C446A /* CharactersMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D321EFAC29083506003C446A /* CharactersMock.swift */; };
 		D3491E632906782800A25B02 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3491E622906782800A25B02 /* Keys.swift */; };
 		D3894E54268357F800E997C2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D3894E53268357F800E997C2 /* Kingfisher */; };
 		D3894E56268380CB00E997C2 /* DetailHeroeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3894E55268380CB00E997C2 /* DetailHeroeViewController.swift */; };
@@ -41,6 +44,16 @@
 		D3EF32DB2680FE7300AA1C5E /* String+md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3EF32DA2680FE7300AA1C5E /* String+md5.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D321EFA429081064003C446A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3EF32AC2680EB3900AA1C5E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3EF32B32680EB3900AA1C5E;
+			remoteInfo = Marvel;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		D31A6D322683C9D600F75B40 /* LoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadCell.swift; sourceTree = "<group>"; };
 		D31A6D332683C9D600F75B40 /* LoadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadCell.xib; sourceTree = "<group>"; };
@@ -52,6 +65,10 @@
 		D321EF962906BC42003C446A /* HomeViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewControllerDataSource.swift; sourceTree = "<group>"; };
 		D321EF982907C482003C446A /* DetailHeroeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroeViewModel.swift; sourceTree = "<group>"; };
 		D321EF9A2907D688003C446A /* DetailHeroeViewControllerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroeViewControllerDataSource.swift; sourceTree = "<group>"; };
+		D321EFA029081064003C446A /* MarvelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D321EFA229081064003C446A /* MarvelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelTests.swift; sourceTree = "<group>"; };
+		D321EFA929081345003C446A /* NetworkClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClientTests.swift; sourceTree = "<group>"; };
+		D321EFAC29083506003C446A /* CharactersMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersMock.swift; sourceTree = "<group>"; };
 		D3491E622906782800A25B02 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		D3894E55268380CB00E997C2 /* DetailHeroeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeroeViewController.swift; sourceTree = "<group>"; };
 		D3B4C529268B192300D12F3B /* ComicsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsAPI.swift; sourceTree = "<group>"; };
@@ -77,6 +94,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D321EF9D29081064003C446A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3EF32B12680EB3900AA1C5E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -138,6 +162,32 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		D321EFA129081064003C446A /* MarvelTests */ = {
+			isa = PBXGroup;
+			children = (
+				D321EFAB29083476003C446A /* Mocks */,
+				D321EFA229081064003C446A /* MarvelTests.swift */,
+				D321EFA929081345003C446A /* NetworkClientTests.swift */,
+			);
+			path = MarvelTests;
+			sourceTree = "<group>";
+		};
+		D321EFAB29083476003C446A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				D321EFAE290837CC003C446A /* RawData */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		D321EFAE290837CC003C446A /* RawData */ = {
+			isa = PBXGroup;
+			children = (
+				D321EFAC29083506003C446A /* CharactersMock.swift */,
+			);
+			path = RawData;
+			sourceTree = "<group>";
+		};
 		D391F134290679E0004C4DB6 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				D3EF32B62680EB3900AA1C5E /* Marvel */,
+				D321EFA129081064003C446A /* MarvelTests */,
 				D3EF32B52680EB3900AA1C5E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -170,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				D3EF32B42680EB3900AA1C5E /* Marvel.app */,
+				D321EFA029081064003C446A /* MarvelTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -234,6 +286,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D321EF9F29081064003C446A /* MarvelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D321EFA829081064003C446A /* Build configuration list for PBXNativeTarget "MarvelTests" */;
+			buildPhases = (
+				D321EF9C29081064003C446A /* Sources */,
+				D321EF9D29081064003C446A /* Frameworks */,
+				D321EF9E29081064003C446A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D321EFA529081064003C446A /* PBXTargetDependency */,
+			);
+			name = MarvelTests;
+			productName = MarvelTests;
+			productReference = D321EFA029081064003C446A /* MarvelTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D3EF32B32680EB3900AA1C5E /* Marvel */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3EF32C82680EB3A00AA1C5E /* Build configuration list for PBXNativeTarget "Marvel" */;
@@ -241,7 +311,6 @@
 				D3EF32B02680EB3900AA1C5E /* Sources */,
 				D3EF32B12680EB3900AA1C5E /* Frameworks */,
 				D3EF32B22680EB3900AA1C5E /* Resources */,
-				D321EF8F29069B5F003C446A /* Run SwiftLint Script */,
 			);
 			buildRules = (
 			);
@@ -262,9 +331,13 @@
 		D3EF32AC2680EB3900AA1C5E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1400;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					D321EF9F29081064003C446A = {
+						CreatedOnToolsVersion = 14.0.1;
+						TestTargetID = D3EF32B32680EB3900AA1C5E;
+					};
 					D3EF32B32680EB3900AA1C5E = {
 						CreatedOnToolsVersion = 12.5;
 					};
@@ -288,11 +361,19 @@
 			projectRoot = "";
 			targets = (
 				D3EF32B32680EB3900AA1C5E /* Marvel */,
+				D321EF9F29081064003C446A /* MarvelTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D321EF9E29081064003C446A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D3EF32B22680EB3900AA1C5E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -310,28 +391,17 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		D321EF8F29069B5F003C446A /* Run SwiftLint Script */ = {
-			isa = PBXShellScriptBuildPhase;
+/* Begin PBXSourcesBuildPhase section */
+		D321EF9C29081064003C446A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Run SwiftLint Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
+				D321EFA329081064003C446A /* MarvelTests.swift in Sources */,
+				D321EFAD29083506003C446A /* CharactersMock.swift in Sources */,
+				D321EFAA29081345003C446A /* NetworkClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-/* End PBXShellScriptBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
 		D3EF32B02680EB3900AA1C5E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -363,6 +433,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D321EFA529081064003C446A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3EF32B32680EB3900AA1C5E /* Marvel */;
+			targetProxy = D321EFA429081064003C446A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		D3EF32BD2680EB3900AA1C5E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -383,6 +461,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		D321EFA629081064003C446A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H6D9922NLH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.albertoparrado.MarvelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Marvel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Marvel";
+			};
+			name = Debug;
+		};
+		D321EFA729081064003C446A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = H6D9922NLH;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.albertoparrado.MarvelTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Marvel.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Marvel";
+			};
+			name = Release;
+		};
 		D3EF32C62680EB3A00AA1C5E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -546,6 +664,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D321EFA829081064003C446A /* Build configuration list for PBXNativeTarget "MarvelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D321EFA629081064003C446A /* Debug */,
+				D321EFA729081064003C446A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D3EF32AF2680EB3900AA1C5E /* Build configuration list for PBXProject "Marvel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

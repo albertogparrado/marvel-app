@@ -9,6 +9,7 @@ import Alamofire
 import Foundation
 
 class NetworkClient {
+    
     // MARK: VARIABLES
     private let baseURL = "https://gateway.marvel.com"
     private let characterPath = "/v1/public/characters"
@@ -24,6 +25,7 @@ class NetworkClient {
     private lazy var hash: String = {
         return md5Hash("\(timestamp)\(privateKey)\(publicKey)")
     }()
+    
     // MARK: CHARACTERS
     func getCharacters(offset: Int, completion: @escaping (Result<CharacterResponse, NetworkError>) -> Void) {
         AF.request(
@@ -54,6 +56,7 @@ class NetworkClient {
             }
         }
     }
+    
     // MARK: SERIES
     func getSeries(characterID: Int, offset: Int, completion: @escaping (Result<SerieResponse, NetworkError>) -> Void) {
         AF.request(
@@ -84,6 +87,7 @@ class NetworkClient {
             }
         }
     }
+    
     // MARK: COMICS
     func getComics(characterID: Int, offset: Int, completion: @escaping (Result<ComicResponse, NetworkError>) -> Void) {
         AF.request(
@@ -114,6 +118,7 @@ class NetworkClient {
             }
         }
     }
+    
     // MARK: EVENTS
     func getEvents(characterID: Int, offset: Int, completion: @escaping (Result<EventResponse, NetworkError>) -> Void) {
         AF.request(
@@ -145,6 +150,7 @@ class NetworkClient {
         }
     }
 }
+
 // MARK: NetworkError
 enum NetworkError: Error, LocalizedError {
     case serverError(String)
